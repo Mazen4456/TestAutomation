@@ -25,7 +25,7 @@ public class InvalidLoginTest {
         PropertiesReader.loadProperties();
             driver = DriverFactory.driverSetUp(System.getProperty("browserName"),true,false);
            /* driver.manage().window().maximize();*/
-            jsonFileManager = new JsonFileManager("src/test/resources/testDataJsonFiels/autimationExerciseData.json");
+            jsonFileManager = new JsonFileManager("src/test/resources/testDataJsonFiles/automationExerciseData.json");
 
     }
 
@@ -39,9 +39,9 @@ public class InvalidLoginTest {
         }
 
         @Test
-        @Description("Asser Login Error Message Appears")
+        @Description("Assert Login Error Message Appears")
         @Severity(SeverityLevel.CRITICAL)
-        public void test2loginToYourAccountVisible() {
+        public void test2loginErrorMessage() {
                     new menuPage(driver)
                     .clickOnLoginButton();
             new loginAndSignupPage(driver)
