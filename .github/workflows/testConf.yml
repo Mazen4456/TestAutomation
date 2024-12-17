@@ -107,6 +107,7 @@ jobs:
         run:  mvn allure:report
 
       - name: Upload Allure Report as Artifact Ubuntu
+        continue-on-error: true
         uses: actions/upload-artifact@v3
         with:
           name: Ubuntu_Allure
