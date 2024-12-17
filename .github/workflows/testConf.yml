@@ -19,6 +19,10 @@ on:
         options:
           - edge
           - chrome
+      headless:
+        options:
+          - true
+          - false
       ubuntuBrowser:
         description: 'Browser you want to run Ubuntu machine on'
         required: true
@@ -52,7 +56,7 @@ jobs:
 
       - name: Run Tests
         continue-on-error: true
-        run: mvn -DbrowserName="${{github.event.inputs.windowsBrowser}}" -Dtest="${{github.event.inputs.testsPath}}" test
+        run: mvn -Dheadless=${{github.event.inputs.headless}}"-DbrowserName="${{github.event.inputs.windowsBrowser}}" -Dtest="${{github.event.inputs.testsPath}}" test
 
       - name: Generate Allure Report Single File Windows
         continue-on-error: true
