@@ -20,7 +20,7 @@ on:
           - edge
           - chrome
       headless:
-        description: 'true, false'
+        description: 'headless (true, false)'
         required: true
         default: false
         type: choice
