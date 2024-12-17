@@ -33,7 +33,7 @@ public class DriverFactory {
             {
                 System.out.println("Running in headless mode");
                 EdgeOptions options = new EdgeOptions();
-                options.addArguments("--headless", "--disable-gpu");
+                options.addArguments("--headless");
                 driver = new EdgeDriver(options);
             }
             else {

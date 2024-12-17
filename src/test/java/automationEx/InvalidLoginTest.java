@@ -10,25 +10,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utiliteis.DriverFactory;
 import utiliteis.JsonFileManager;
 import utiliteis.PropertiesReader;
+
+import java.util.concurrent.TimeUnit;
 
 public class InvalidLoginTest {
         WebDriver driver;
         private JsonFileManager jsonFileManager;
 
 
-    @BeforeClass
-        public void beforeClass() {
+        @BeforeClass
+        private void loggingProperties() {
         PropertiesReader.loadProperties();
-
-            driver = DriverFactory.driverSetUp(System.getProperty("browserName"),true, Boolean.parseBoolean(System.getProperty("headless")));
-           /* driver.manage().window().maximize();*/
-            jsonFileManager = new JsonFileManager("src/test/resources/testDataJsonFiles/automationExerciseData.json");
-
-    }
+        }
+        @BeforeMethod
+        private void setup() {
+        driver = DriverFactory.driverSetUp(System.getProperty("browserName"),true, Boolean.parseBoolean(System.getProperty("headless")));
+        jsonFileManager = new JsonFileManager("src/test/resources/testDataJsonFiles/automationExerciseData.json");
+        }
 
         @Test
         @Description("Assert Home Page Displayed")
@@ -37,13 +40,7 @@ public class InvalidLoginTest {
             new homePage(driver)
                     .navigateToUrl(jsonFileManager.getTestData("url"))
                     .assertHomePageIconIsOrange();
-        }
-
-        @Test
-        @Description("Assert Login Error Message Appears")
-        @Severity(SeverityLevel.CRITICAL)
-        public void test2loginErrorMessage() {
-                    new menuPage(driver)
+            new menuPage(driver)
                     .clickOnLoginButton();
             new loginAndSignupPage(driver)
                     .assertLoginTitleAppears()
@@ -52,7 +49,7 @@ public class InvalidLoginTest {
         }
 
         @AfterClass
-        public void quitDriver() {
+        public void tearDown() {
             driver.quit();
          }
 
