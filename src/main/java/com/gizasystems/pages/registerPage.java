@@ -50,7 +50,7 @@ public class registerPage {
     }
 
     public void fillingAddressInformationToRegister(String address, String state, String city, String zip, String phoneNum) {
-        driver.findElement(addressField).sendKeys();
+        driver.findElement(addressField).sendKeys(address);
         driver.findElement(countryOptions).click();
         driver.findElement(countryCanadaOption).click();
         driver.findElement(stateField).sendKeys(state);
