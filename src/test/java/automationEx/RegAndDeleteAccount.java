@@ -32,14 +32,14 @@ public class RegAndDeleteAccount {
                 .signup("mazen", "mazen@test.com");
         new registerPage(driver)
                 .assertTheTitleIsVisible()
-                .fillingAccountInformationToRegister("password", "mazen", "Amer")
+                .fillingAccountInformationToRegister("password", jsonFileManager.getTestData("userName"), "Amer")
                 .fillingAddressInformationToRegister("24 taqa", "Cairo", "Nasr City", "44332", "01114002970");
         new accountCreatedPage(driver)
                 .assertAccountIsCreated()
                 .clickOnContinueButton();
     }
     @Test
-    public void test3LogedUserNameAppersInHomePage(){
+    public void test3LogedinUserNameAppearsInHomePage(){
         new homePage(driver).assertLogedUserNameAppears("mazen");
     }
     @Test
