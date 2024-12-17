@@ -20,6 +20,10 @@ on:
           - edge
           - chrome
       headless:
+        description: 'true, false'
+        required: true
+        default: false
+        type: choice
         options:
           - true
           - false
