@@ -23,7 +23,7 @@ public class InvalidLoginTest {
     @BeforeClass
         public void beforeClass() {
         PropertiesReader.loadProperties();
-            driver = DriverFactory.iniatieDriver(System.getProperty("browserName"),true);
+            driver = DriverFactory.driverSetUp(System.getProperty("browserName"),true,false);
            /* driver.manage().window().maximize();*/
             jsonFileManager = new JsonFileManager("src/test/resources/testDataJsonFiels/autimationExerciseData.json");
 
